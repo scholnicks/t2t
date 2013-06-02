@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>t2t installation instructions</title>
+</head>
+
+<body>
+
+<h1>t2t installation instructions</h1>
+<h5>Last Updated 1/3/09</h5>
+
+<p>
+t2t is licensed under <a href="license.html">LGPL</a>.
+</p>
+
+<p>
+t2t.pl is a Perl script for converting delimited text to HTML tables.  These instructions
+are specific for a Unix like system.  
+Email me for a Windows system.	               
+</p>
+
+Files Included:<br />
+<table border="1" summary="included files">
+<tr><td>t2t.pl</td>				<td>t2t source</td></tr>
+<tr><td>t2t.rc</td>				<td>sample initialization file</td></tr>
+<tr><td>t2t.1</td>				<td>nroff formatted file</td></tr>
+<tr><td>makefile</td>			<td>makefile for easy installation</td></tr>
+<tr><td>readme.html</td>		<td>this file</td></tr>
+<tr><td>license.html</td>		<td>t2t's license</td></tr>
+<tr><td>lgpl.txt</td>			<td>complete license</td></tr>
+<tr><td>T2t</td>                <td>directory of support files (perl modules)</td></tr>
+</table>
+
+<div>
+<h2>Installation</h2>
+
+<p>
+As of version 5.0, t2t comes with a makefile.  You can use it or follow the instructions below.
+You may need to be root to install t2t.  It should work "as is" out of the box.
+</p>
+
+<h3>External Perl Modules</h3>
+<p>Starting with version 6.0 <code>t2t</code> relies on three external modules to parse Excel, OpenOffice,
+and CSV files. The modules are:</p>
+<ul>
+   <li><a href="http://search.cpan.org/~szabgab/Spreadsheet-ParseExcel-0.32/lib/Spreadsheet/ParseExcel.pm">Spreadsheet::ParseExcel</a></li>
+   <li><a href="http://search.cpan.org/~terhechte/Spreadsheet-ReadSXC-0.20/ReadSXC.pm">Spreadsheet::ReadSXC</a></li>
+   <li><a href="http://search.cpan.org/~hmbrand/Text-CSV_XS-0.34/CSV_XS.pm">Text::CSV_XS</a></li>
+</ul>
+<p>
+<code>t2t</code> will continue to parse ASCII delimited files without these modules installed.  These modules can 
+all be installed from <a href="http://www.cpan.org/">CPAN</a>. 
+Installing <a href="http://search.cpan.org/dist/Spreadsheet-Read/Read.pm">Spreadsheet::Read</a> will install
+all three modules that <code>t2t</code> uses.
+</p>
+
+<h3>You Have Root Access</h3>
+
+<ol>
+   <li>cd to the t2t installation directory</li>
+   <li>sudo make</li>
+</ol>
+
+<h3>No Root Access</h3>
+
+<ol>
+
+<li>Copy the T2t directory to a directory.  
+Edit your environment variable PERL5LIB to contain the parent directory
+of the T2t directory</li>
+
+<li>Copy t2t.pl to your personal bin directory (e.g. <code>/Users/steve/bin</code>)
+ and rename it to t2t</li>
+
+<li>Copy t2t.rc to $HOME/.t2trc</li>
+
+<li>Copy t2t.1 to your personal man directory.</li>
+</ol>
+
+
+</div>
+
+<h2>Help</h2>
+
+<p>
+Available at <a href="http://www.scholnick.net/t2t/">http://www.scholnick.net/t2t</a>
+</p>
+
+<p>
+T2t is LPGL.
+</p>
+
+</body>
+</html>

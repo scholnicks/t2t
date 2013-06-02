@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<!--
+	t2t resource file
+	Version > 4.20
+
+	This is a bare bones rc file; all of the options have been commented out.  This will
+	use all of the t2t's defaults and it will not complain about a missing rc file.
+	
+	Most users will want to customize this file for their particular needs.  
+-->
+
+<t2t>
+
+    <general>
+       <!---
+        <delim>\t</delim>
+        <debug>false</debug>
+       	<equalColumns>false</equalColumns>
+        <skipFields>1</skipFields>
+        <header>true</header>
+        <quiet>true</quiet>
+        <verbose>true</verbose>
+        <overwrite>true</overwrite>
+        <oneTable>false</oneTable>
+        <addNewLine>true</addNewLine>
+        <nbsp>true</nbsp>
+        <title>a Title</title>
+        <tablesOnly>false</tablesOnly>
+        <addSpace>false</addSpace>
+        <squeeze>false</squeeze>
+        <removeEmptyRows>false</removeEmptyRows>
+        <limit>1</limit>
+		<dashes>true</dashes>
+		<createH1>false</createH1>
+        <emptyRowCellAtt>class = "emptyRow"</emptyRowCellAtt>
+        -->
+    </general>
+
+    <body>
+    <!--
+        <bgcolor>#FFFFFF</bgcolor>
+        <vlink>#FF0000</vlink>
+        <alink>#00FF00</alink>
+        <link>#0000FF</link>
+        <text>#000000</text>
+        <background>background.jpg</background>
+    -->
+    </body>
+
+    <table>
+     <!--
+        <border>1</border>
+        <width>100%</width>
+        <highlightColumn>
+	       	<number>2</number>	 
+        	<color>#00FF00</color>
+        </highlightColumn>
+        <ledgerColors>#D3D3D3,#FFFFFF</ledgerColors>
+        <cellWidths>50,50</cellWidths>
+        <cellAlignments>left,right</cellAlignments>
+        <cellspacing>4</cellspacing>
+        <cellpadding>2</cellpadding>
+        <bgcolor>#FFFFFF</bgcolor>
+        <align>center</align>
+        <frame>above</frame>
+        <rules>none</rules>
+       -->
+    </table>
+
+    <cell>
+      <!--
+        <bgcolor>grey</bgcolor>
+        <headerColor>#00FFCC</headerColor>
+      -->
+    </cell>
+</t2t>

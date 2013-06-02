@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<t2t>
+    <general>
+        <delim>:<delim>
+        <header>true</header>
+        <quiet>true</quiet>
+        <oneTable>false</oneTable>
+        <nbsp>true</nbsp>
+        <tablesOnly>false</tablesOnly>
+    </general>
+
+    <body>
+        <bgcolor>#FFFFFF</bgcolor>
+    </body>
+
+    <table>
+        <highlightColumn>
+	       	<number>2</number>	 
+        	<color>#00FF00</color>
+        </highlightColumn>
+        <border>1</border>
+    </table>
+
+    <cell>
+    </cell>
+</t2t>

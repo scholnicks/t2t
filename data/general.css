@@ -1,0 +1,22 @@
+<style>
+body        
+{ 
+    background   : #FFFFFF; 
+    color        : black;  
+    margin-top   : 0px; 
+    margin-left  : 0px;
+	font-size    : 12pt;
+    font-family  : Arial,Helvetica,Sans-Serif;
+ 	behavior	 : url(/csshover.htc);
+}
+
+table,th,img,tr,td,p,div
+{
+   vertical-align : top; 
+}
+
+thead
+{
+	background-color : red;
+}
+</style>

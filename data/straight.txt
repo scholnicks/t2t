@@ -1,0 +1,18 @@
+Name	Rank	Record	1	2	3	4	Balls For	Balls Against	Balls Made Ratio
+Nick Lukow	1	1 - 0	X	&nbsp;	&nbsp;	80 - 47	80	47	1.7021
+Adam Halbrock	0	0 - 1	&nbsp;	X	&nbsp;	20 - 50	20	50	0.4000
+Chris Frazier	-3	0 - 0	&nbsp;	&nbsp;	X	&nbsp;	0	0	#DIV/0!
+Hansen Brenkus	-1	1 - 1	47 - 80	50 - 20	&nbsp;	X	97	100	0.9700
+									
+Name	Rank	Record	1	2	3	4	Balls For	Balls Against	Balls Made Ratio
+Josh Gates	2	0 - 1	X	&nbsp;	48 - 50	&nbsp;	48	50	0.9600
+Jan Brown	0	0 - 0	&nbsp;	X	&nbsp;	&nbsp;	0	0	#DIV/0!
+Josh Ciampini	-1	1 - 0	50- 48	&nbsp;	X	&nbsp;	50	48	1.0417
+Will Hammond	3	0 - 0	&nbsp;	&nbsp;	&nbsp;	X	0	0	#DIV/0!
+									
+Name	Rank	Record	1	2	3	4	Balls For	Balls Against	Balls Made Ratio
+Adrian Liptrot	-3	0 - 0	X	&nbsp;	&nbsp;	&nbsp;	0	0	#DIV/0!
+Chad Hasychak	1	0 - 0	&nbsp;	X	&nbsp;	&nbsp;	0	0	#DIV/0!
+Steve Scholnick	2	0 - 0	&nbsp;	&nbsp;	X	&nbsp;	0	0	#DIV/0!
+Mike Byrne	0	0 - 0	&nbsp;	&nbsp;	&nbsp;	X	0	0	#DIV/0!
+									

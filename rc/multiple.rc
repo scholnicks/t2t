@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<t2t>
+    <general>
+        <delim>:</delim>
+        <header>yes</header>
+        <oneTable>true</oneTable>
+        <nbsp>1</nbsp>
+       	<squeeze>1</squeeze>
+         <tablesOnly>true</tablesOnly>
+    </general>
+    <table>
+        <border>1</border>
+    </table>
+</t2t>

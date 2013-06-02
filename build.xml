@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+
+<project name="t2t" default="install" basedir=".">
+
+	<description>Creates and installs t2t</description>
+
+	<property name="version"       value="7.3.1" />
+	<property name="scratch_dir"   value="t2t-${version}" />
+	<property name="tar_ball_name" value="${scratch_dir}.tar" />
+		
+	<target name="tar" depends="create_tar,upload_tar,clean" />
+
+	<target name="release" depends="tar">
+		<exec executable="hg">
+			<arg line="commit -m'updated for ${version}'" />
+        </exec>
+        <echo message="Commited to Mercurial" />
+
+		<exec executable="hg">
+			<arg line="tag ${version}" />
+        </exec>
+        <echo message="Mercurial tag ${version} has been created" />
+    </target>
+
+	<target name="install" depends="install_worker,clean" />
+
+	<target name="init">
+		<mkdir dir="${scratch_dir}" />
+		<chmod dir="${scratch_dir}" perm="a+r" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${scratch_dir}"       />
+		<delete file="${tar_ball_name}.gz" />
+		<delete file="try.html"            />
+		<delete file="t2t.1"               />
+	</target>
+
+	<target name="install_worker" depends="init,fix_main">
+		<copy toDir="/Library/Perl/5.12/T2t">
+			<fileset dir="T2t">
+				<include name="*.pm" />
+			</fileset>
+		</copy>
+		<chmod perm="a+r">
+			<fileset dir="/Library/Perl/5.12/T2t">
+				<include name="*.pm" />
+			</fileset>
+		</chmod>
+		<chmod perm="755" file="/Library/Perl/5.12/T2t" />
+
+		<copy file="${scratch_dir}/t2t.pl" toFile="/Users/steve/bin/t2t" />
+		<chmod file="/Users/steve/bin/t2t" perm="755" />
+	</target>
+
+    <target name="man" depends="doc">
+		<copy file="${basedir}/t2t.1" toFile="/usr/share/man/man1/t2t.1" />
+		<chmod file="/usr/share/man/man1/t2t.1" perm="a+r" />
+        <antcall target="clean" /> 
+    </target>
+
+	<target name="create_tar" depends="init,load_scratch">
+		<tar tarfile="${tar_ball_name}" basedir="."
+			includes="${scratch_dir}/**" 
+		/>
+		<gzip zipfile="${tar_ball_name}.gz" src="${tar_ball_name}"/>
+		<chmod dir="${tar_ball_name}.gz" perm="a+r" />
+		<delete file="${tar_ball_name}" />
+	</target>
+
+	<target name="load_scratch" depends="init,fix_main,doc">
+		<mkdir dir="${scratch_dir}/T2t" />
+		<copy toDir="${scratch_dir}/T2t">
+			<fileset dir="T2t">
+				<include name="*.pm" />
+				<exclude name="CDRListVisitor.pm" />
+			</fileset>
+		</copy>
+		<copy file="lgpl.txt" 		toDir="${scratch_dir}" />
+		<copy file="license.html"	toDir="${scratch_dir}" />
+		<copy file="readme.html" 	toDir="${scratch_dir}" />
+		<copy file="rc/t2t.rc" 		toDir="${scratch_dir}" />
+		<copy file="t2t.1" 			toDir="${scratch_dir}" />
+		<copy file="makefile" 		toDir="${scratch_dir}" />
+
+  		<replaceregexp 
+  			file="${scratch_dir}/readme.html"
+            match="google-analytics"
+            replace=""
+            byline="true"
+        />
+
+  		<replaceregexp 
+  			file="${scratch_dir}/license.html"
+            match="google-analytics"
+            replace=""
+            byline="true"
+        />
+
+		<chmod file="${scratch_dir}/t2t.pl" perm="755" />
+		
+		<chmod perm="a+r">
+			<fileset dir="${scratch_dir}" />
+		</chmod>
+	</target>
+
+	<target name="fix_main" depends="init">
+		<copy file="t2t.pl" toFile="${scratch_dir}/t2t.pl" />
+
+  		<replaceregexp 
+  			file="${scratch_dir}/t2t.pl"
+            match="^use lib '/Users/steve/perl/t2t';$"
+            replace=""
+            byline="true"
+        />
+	</target>
+
+	<target name="upload_tar" description="uploads the tar file">
+		<exec executable="scp">
+			<arg line="${tar_ball_name}.gz scholnic@scholnick.net:www/t2t" />
+        </exec>
+	</target>  	
+
+	<!--
+	<target name="html" description="uploads the HTML files">
+		<exec executable="scp">
+			<arg line="readme.html scholnic@scholnick.net:www/t2t" />
+		</exec>
+		<echo message="Uploaded readme.html" />
+		
+       <exec executable="scp">
+			<arg line="license.html scholnic@scholnick.net:www/t2t" />
+       </exec>
+	</target>
+	-->
+	
+	<target name="doc" description="Creates the man page">
+        <exec executable="${basedir}/createdoc.sh" />
+	</target>
+</project>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>t2t - text to HTML translator</title>
+</head>
+
+<body>
+
+<h1>NAME</h1>
+<b>t2t</b> - text to HTML translator
+
+<p>
+<h1>SYNOPSIS</h1>
+<b>t2t</b> <i>[Options]</i> <i>Text Files</i>
+</p>
+
+<p>
+<h1>DESCRIPTION</h1>
+<b>t2t</b> converts standard ASCII text to HTML 
+tables.  Any text with the delimiter embedded in it is converted to a 
+table.  The user can specify any regular expression as a delimiter; the default
+delimiter is the tab.  As a result, t2t can easily transform any 
+spreadsheet saved as tab delimited text to a  HTML table.
+The table ends with either the end of the file or the first line of 
+non-delimited text.  All other text is just written to the output file.
+</p>
+
+<p>
+<h1>OPTIONS</h1>
+<dl>
+	<dt>--class</dt>
+	<dd>CSS class for all tables</dd>
+	
+   	<dt>--dashes</dt>
+   	<dd>Skip any line, that starts with 5 dashes or underscores.</dd>
+
+   	<dt>--delim [value]</dt>
+   	<dd>changes delimiter to <code>value</code></dd>
+
+   	<dt>--debug</dt>
+   	<dd>Turns on debugging mode (implies --verbose)</dd>
+   	
+	<dt>--equal</dt>
+	<dd>Ensures all rows have the same number of columns</dd>
+
+   	<dt>--header</dt>
+   	<dd>Generate a header row (the first row) for each table.</dd>
+
+	<dt>--help</dt>
+	<dd>prints out the help screen</dd>
+
+  	<dt>--highlight [column number]</dt>
+  	<dd>Highlight a column header.  Must be used in conjunction with header option</dd>
+
+  	<dt>--html5</dt>
+  	<dd>Output in HTML5 mode (--template can override)</dd>
+  	
+	<dt>--id</dt>
+	<dd>CSS id for all tables (only should be used with --one)</dd>
+	
+   	<dt>--initFilePath [path to initialization file]</dt>
+   	<dd>Reads in an initialization file from the specified path</dd>
+
+  	<dt>--limit [number of columns]</dt>
+  	<dd>Limits the number of columns.  Useful for log files</dd>
+
+	<dt>--nbsp</dt>
+	<dd>prints a &amp;nbsp; instead of a blank</dd>
+
+	<dt>--one</dt>
+	<dd>Process the entire input file (or all of stdin) 
+		 as one table.  Any line with out a delimiter is written out as a table
+		 line with a row with one data module.  
+	</dd>
+
+	<dt>--overwrite</dt>
+	<dd>controls if <code>t2t</code> will overwrite .html files</dd>
+
+	<dt>--quiet</dt>
+	<dd>quiet mode</dd>
+
+	<dt>--squeeze</dt>
+	<dd>squeeze out extra fields, i.e. extra delimiters.</dd>
+
+	<dt>--skipfields [value]</dt>
+	<dd> <p>Skip field <code>value</code>.  Value is a single positive integer.</dd>
+
+	<dt>--style</dt>
+	<dd>CSS style for all tables</dd>
+	
+	<dt>--tablesOnly</dt>
+	<dd>generate only HTML for the tables no surrounding HTML</dd>
+
+	<dt>--template [file]</dt>
+	<dd>Use the specified template file</dd>
+	
+	<dt>--title [title]</dt>
+	<dd>adds a title to the HTML document</dd>
+
+	<dt>--verbose</dt>
+	<dd>verbose mode</dd>
+
+	<dt>--version</dt>
+	<dd>prints out the current version number</dd>
+
+	<dt>--wholeTable</dt>
+	<dd>synonym for --one</dd>
+</dl>
+</p>
+
+<p>
+<h1>SEE ALSO</h1>
+T2t Online at http://www.scholnick.net/t2t<br>
+perl(1), perlre(1), perlreref(1)
+</p>
+
+<p>
+<h1>AUTHOR</h1>
+Steven Scholnick &lt;steve@scholnick.net&gt; 1996 - 2011
+</p>
+
+<p>
+<h1>COPYRIGHT</h1>
+t2t is published under LGPL.  See http://www.scholnick.net/t2t/license.html for details
+</p>
+
+<!--#include virtual="/google-analytics" -->
+</body>
+</html>
