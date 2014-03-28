@@ -4,7 +4,7 @@
 #
 #  (c) Steven Scholnick <steve@scholnick.net>
 #
-#  t2t is published under LGPL.  See license.html for details
+#  t2t is published under a MIT license. See http://www.scholnick.net/license.txt for details.
 #
 #  Full documentation avaiable at:
 #	http://www.scholnick.net/t2t
@@ -24,7 +24,7 @@ use T2t::PreferencesFileReader;
 use T2t::Utilities;
 use T2t::UserPreferencesCache;
 
-our $version = '7.3.1';
+our $version = '7.3.2';
 
 {
 	my $initFilePath;
@@ -150,9 +150,9 @@ sub printVersion				# print out the current version
 
 t2t : Version $version
 
-(c) Steven Scholnick <steve\@scholnick.net> 1996 - 2011
+(c) Steven Scholnick <steve\@scholnick.net> 1996 - 2014
 
-t2t is published under LGPL.  See http://www.scholnick.net/t2t/license.html for details
+t2t is published under a MIT license. See http://www.scholnick.net/license.txt for details.
 
 EOV
 

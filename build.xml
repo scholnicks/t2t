@@ -4,23 +4,11 @@
 
 	<description>Creates and installs t2t</description>
 
-	<property name="version"       value="7.3.1" />
+	<property name="version"       value="7.3.2" />
 	<property name="scratch_dir"   value="t2t-${version}" />
 	<property name="tar_ball_name" value="${scratch_dir}.tar" />
 		
 	<target name="tar" depends="create_tar,upload_tar,clean" />
-
-	<target name="release" depends="tar">
-		<exec executable="hg">
-			<arg line="commit -m'updated for ${version}'" />
-        </exec>
-        <echo message="Commited to Mercurial" />
-
-		<exec executable="hg">
-			<arg line="tag ${version}" />
-        </exec>
-        <echo message="Mercurial tag ${version} has been created" />
-    </target>
 
 	<target name="install" depends="install_worker,clean" />
 
@@ -76,8 +64,7 @@
 				<exclude name="CDRListVisitor.pm" />
 			</fileset>
 		</copy>
-		<copy file="lgpl.txt" 		toDir="${scratch_dir}" />
-		<copy file="license.html"	toDir="${scratch_dir}" />
+		<copy file="license.txt"	toDir="${scratch_dir}" />
 		<copy file="readme.html" 	toDir="${scratch_dir}" />
 		<copy file="rc/t2t.rc" 		toDir="${scratch_dir}" />
 		<copy file="t2t.1" 			toDir="${scratch_dir}" />
