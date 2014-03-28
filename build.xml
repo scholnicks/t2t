@@ -31,11 +31,11 @@
 			</fileset>
 		</copy>
 		<chmod perm="a+r">
-			<fileset dir="/Library/Perl/5.12/T2t">
+			<fileset dir="/Library/Perl/5.16/T2t">
 				<include name="*.pm" />
 			</fileset>
 		</chmod>
-		<chmod perm="755" file="/Library/Perl/5.12/T2t" />
+		<chmod perm="755" file="/Library/Perl/5.16/T2t" />
 
 		<copy file="${scratch_dir}/t2t.pl" toFile="/Users/steve/bin/t2t" />
 		<chmod file="/Users/steve/bin/t2t" perm="755" />
