@@ -23,40 +23,40 @@ sub createData				# creates the tables and outputs them
 {
 	my $self = shift;
 	my $file = $self->getFile();		# input filename
-	
+
 	eval 'use Spreadsheet::ParseExcel';
 	if( $@ )
 	{
 		warnMessage("Unable to process $file, Spreadsheet::ParseExcel must be installed.\n");
 		return;
 	}
-	
+
 	eval 'use Spreadsheet::ParseExcel::Workbook';
 
 	my @tables;
-	
+
 	my $excel = Spreadsheet::ParseExcel::Workbook->Parse($file);
-	
+
   	# create and initialize the table object
   	my $table = $self->createTable();
 
-	foreach my $sheet (@{$excel->{Worksheet}}) 
+	foreach my $sheet (@{$excel->{Worksheet}})
 	{
 		$sheet->{MaxRow} ||= $sheet->{MinRow};
-		
+
 		next if ! $sheet->{MaxRow};
-		 
-		foreach my $row ($sheet->{MinRow} .. $sheet->{MaxRow}) 
+
+		foreach my $row ($sheet->{MinRow} .. $sheet->{MaxRow})
 		{
 			my @cellData = ();
-			
+
 			$sheet->{MaxCol} ||= $sheet->{MinCol};
-			foreach my $col ($sheet->{MinCol} ..  $sheet->{MaxCol}) 
+			foreach my $col ($sheet->{MinCol} ..  $sheet->{MaxCol})
 			{
 				my $cell = $sheet->{Cells}[$row][$col];
 				push( @cellData, $cell->{Val}) if( $cell );
 			}
-			
+
 			$table->addRow( new T2t::Row(\@cellData) );
 		}
 	}
@@ -70,6 +70,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>
 
 t2t is published under LGPL.  See license.html for details

@@ -25,31 +25,31 @@ sub new
 #	creates the table for all incoming arguments
 #   @param args		paths to directories or files that will be translated
 ##
-sub processFilesAndDirectories	# does all the work.  
+sub processFilesAndDirectories	# does all the work.
 {
    my $self          = shift;
    my @args          = @_;
    my $baseDir       = cwd();
-   	
+
    my @dirArguments;
    my @fileArguments;
-   
+
    foreach my $arg ( @args )
-   { 
+   {
       if( -d $arg )   # found a directory, add it to the dir list
       {
          push(@dirArguments,$arg);
       }
       else            # just a file, add it to the file list
-      { 
+      {
         push(@fileArguments,$arg);
       }
    }
- 
+
    # translate each of directories one at a time
-   foreach my $dir ( @dirArguments ) 
-   { 
-      $self->translateFileOrDirectory( $dir ); 
+   foreach my $dir ( @dirArguments )
+   {
+      $self->translateFileOrDirectory( $dir );
       chdir $baseDir;
    }
 
@@ -70,7 +70,7 @@ sub translateFileOrDirectory		# goes through each file in the list
   	  $self->translate();
   	  return;
   }
-  
+
   my $cur  = $_[0];
 
   return if ! $cur;
@@ -85,13 +85,13 @@ sub translateFileOrDirectory		# goes through each file in the list
      chdir $cur;
      $cwd = cwd();
      message("reading directory $cur\n");
-     
+
      if( ! opendir(DIR,$cwd) )
      {
      	warnMessage("cannot open directory $cwd for reading: $!");
      	return;
      }
-     
+
      @current = grep(!/^\.\.?$|\.html?$/, readdir(DIR));  # elim .,.., & .html
      closedir(DIR);
   }
@@ -106,7 +106,7 @@ sub translateFileOrDirectory		# goes through each file in the list
      {
         message("reading directory $file\n");
         $self->translateFileOrDirectory( ($file) );				# recursively through files
-        chdir('..');                       
+        chdir('..');
      }
      else					# a text file
      {
@@ -125,7 +125,7 @@ sub translate				# creates the tables and outputs them
 {
 	my $self = shift;
 	my $file = shift;		# input filename
-	
+
 	T2t::TranslatorFactory::getInstance()->createTranslator($file)->translate();
 }
 
@@ -135,6 +135,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>
 
 t2t is published under LGPL.  See license.html for details

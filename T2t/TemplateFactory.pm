@@ -12,17 +12,17 @@ our @EXPORT = qw(getTemplate);
 sub getTemplate
 {
 	my $prefs = T2t::UserPreferencesCache->getInstance();
-	
+
 	return "{data}" if $prefs->isTablesOnly();
-	
+
 	my $path = $prefs->getTemplateFile();
 
 	debug("Template path = ", $path);
-	
+
 	return getDefaultTemplate() if ! $path;
-		
+
 	return getHTML5Template() if $path eq 't2t-internal-html5';
-	
+
 	return getFileData($path);
 }
 
@@ -56,7 +56,7 @@ sub getHTML5Template
    <meta charset="utf-8" />
    <meta name="generator" content="t2t" />
    <title>{title}</title>
-   
+
    <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
    <![endif]-->

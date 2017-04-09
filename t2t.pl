@@ -20,7 +20,7 @@ use Getopt::Long;
 use lib '/Users/steve/perl/t2t';
 
 use T2t::Engine;
-use T2t::PreferencesFileReader;	
+use T2t::PreferencesFileReader;
 use T2t::Utilities;
 use T2t::UserPreferencesCache;
 
@@ -56,12 +56,12 @@ our $version = '7.3.2';
 		'template=s'		=> \$commandLine{'general.template'},
 		'title=s'			=> \$commandLine{'general.title'},
 		'verbose!'			=> \$commandLine{'general.verbose'},
-		'version'   		=> \&version,	
+		'version'   		=> \&version,
 		'wholeTable!'		=> \$commandLine{'general.oneTable'},
 	) or help();
 
 	$commandLine{'general.template'} = 't2t-internal-html5' if $commandLine{'general.html5'};
-	
+
 	# first process command line options so --initFilePath and --quiet will be used
 	T2t::UserPreferencesCache::getInstance->parseAttributes( \%commandLine );
 
@@ -70,12 +70,12 @@ our $version = '7.3.2';
 
 	$prefs{'general.template'} = 't2t-internal-html5' if $prefs{'general.html5'};
 
-	# now process all of the options for all data processing	
+	# now process all of the options for all data processing
 	T2t::UserPreferencesCache::getInstance->parseAttributes( \%prefs );
 
 	# do the real work
 	new T2t::Engine()->processFilesAndDirectories( @ARGV );
-	
+
 	exit 0;
 }
 
@@ -87,44 +87,44 @@ sub merge	# reads from the preferences and adds all of the prefs to the prefs
 	my $initFilePath 	= shift;
 	my $lineSpecified 	= shift;
 	my $prefs         	= shift;
-	
+
 	my $prefsReader = new T2t::PreferencesFileReader( $initFilePath );
-	
+
 	foreach ( qw(delim title skipFields header quiet squeeze verbose overwrite debug html5
-				 oneTable emptyRowCellAtt nbsp limit tablesOnly addSpace equalColumns) 
+				 oneTable emptyRowCellAtt nbsp limit tablesOnly addSpace equalColumns)
 		    )
 	{
 		my $prefName = "general.$_";
-		
+
 		$prefs->{$prefName} = $prefsReader->getPreference('general',$_);
-		
+
 		# if the preference is specified on the command line
 		# use the command line version always
-		
+
 		if( defined($lineSpecified->{$prefName}) )
 		{
 			$prefs->{$prefName} = $lineSpecified->{$prefName};
 		}
 	}
-	
+
 	foreach ( qw(style id class border width cellspacing cellpadding bgcolor align emptyRowCellAtt cellAlignments cellWidths ledgerColors) )
 	{
 		my $prefName = "table.$_";
-		
+
 		$prefs->{$prefName} = $prefsReader->getPreference('table',$_);
 		$prefs->{$prefName} = $lineSpecified->{$prefName} if defined($lineSpecified->{$prefName});
 	}
-	
+
 	foreach ( qw(bgcolor headerColor) )
 	{
 		$prefs->{"cell.$_"} = $prefsReader->getPreference('cell',$_);
 	}
 
 	# handle highlight column attributes separately
-	
+
 	$prefs->{'table.highlightColumn.number'} = $prefsReader->getHighlightColumnNumber();
 	$prefs->{'table.highlightColumn.color'}  = $prefsReader->getHighlightColumnColor();
-	
+
 	# check for the the highlight column number on the command line
 	if( defined($lineSpecified->{'table.highlightColumn.number'}) )
 	{
@@ -139,7 +139,7 @@ sub merge	# reads from the preferences and adds all of the prefs to the prefs
 			$prefs->{'table.highlightColumn.number'} = undef;
 		}
 	}
-	
+
 	$prefs->{'general.limit'} = undef if( ! $prefs->{'general.limit'} );
 }
 
@@ -150,7 +150,7 @@ sub printVersion				# print out the current version
 
 t2t : Version $version
 
-(c) Steven Scholnick <steve\@scholnick.net> 1996 - 2014
+(c) Steven Scholnick <scholnicks\@gmail.com> 1996 -
 
 t2t is published under a MIT license. See http://www.scholnick.net/license.txt for details.
 
@@ -168,7 +168,7 @@ sub help		# the help screen
 {
 
 	printVersion();
-	
+
 	print <<EOH;
 --class         CSS class for all tables
 --dashes        ignore lines of dashes
@@ -295,7 +295,7 @@ Version History
 - Renamed addParagraph option as addSpace
 
 5.0
-- Added XHTML 
+- Added XHTML
 
 4.3.6
 - Updated to allow zero attributes to perform work
@@ -317,7 +317,7 @@ Version History
 - Added header column hilighting
 
 4.31
-- Fixed skip fields 
+- Fixed skip fields
 - Removed ledger command line option
 - Added thead tag
 
@@ -343,7 +343,7 @@ Version History
 
 4.00
 - Dropped classic MacOS support
-- Allowed newlines in the rc file 
+- Allowed newlines in the rc file
 - Fixed cellWidths, cellAlignments, and ledgerColors options
 - Added back support for just .t2trc
 - Added custom prefernces class to read in the preferences
@@ -353,8 +353,8 @@ Version History
 - Added -i command line option
 
 3.50
-- Mostly internal changes.  
-- Some command line option cleanup.  
+- Mostly internal changes.
+- Some command line option cleanup.
 - New rc file format
 
 3.01
@@ -373,7 +373,7 @@ Version History
 - removed checking for the caption on the previous non-delimited line
 - ledger colors can be greater than 2
 - skipfields now takes a regular expression (can match more than one column)
-- added delimiter (and other options) to the initialization file 
+- added delimiter (and other options) to the initialization file
 
 2.30
 - minor fixes for the MacOS version
@@ -396,7 +396,7 @@ Version History
 - finally fixed the directory and sub-directory processing
 
 1.90
-- bug fixes 
+- bug fixes
 - added the header color option
 
 1.75
@@ -414,4 +414,4 @@ Version History
 - removed the redundant -o option
 
 1.00
-- initial release 
+- initial release

@@ -7,7 +7,7 @@
 	<property name="version"       value="7.3.2" />
 	<property name="scratch_dir"   value="t2t-${version}" />
 	<property name="tar_ball_name" value="${scratch_dir}.tar" />
-		
+
 	<target name="tar" depends="create_tar,upload_tar,clean" />
 
 	<target name="install" depends="install_worker,clean" />
@@ -44,12 +44,12 @@
     <target name="man" depends="doc">
 		<copy file="${basedir}/t2t.1" toFile="/usr/share/man/man1/t2t.1" />
 		<chmod file="/usr/share/man/man1/t2t.1" perm="a+r" />
-        <antcall target="clean" /> 
+        <antcall target="clean" />
     </target>
 
 	<target name="create_tar" depends="init,load_scratch">
 		<tar tarfile="${tar_ball_name}" basedir="."
-			includes="${scratch_dir}/**" 
+			includes="${scratch_dir}/**"
 		/>
 		<gzip zipfile="${tar_ball_name}.gz" src="${tar_ball_name}"/>
 		<chmod dir="${tar_ball_name}.gz" perm="a+r" />
@@ -70,14 +70,14 @@
 		<copy file="t2t.1" 			toDir="${scratch_dir}" />
 		<copy file="makefile" 		toDir="${scratch_dir}" />
 
-  		<replaceregexp 
+  		<replaceregexp
   			file="${scratch_dir}/readme.html"
             match="google-analytics"
             replace=""
             byline="true"
         />
 
-  		<replaceregexp 
+  		<replaceregexp
   			file="${scratch_dir}/license.html"
             match="google-analytics"
             replace=""
@@ -85,7 +85,7 @@
         />
 
 		<chmod file="${scratch_dir}/t2t.pl" perm="755" />
-		
+
 		<chmod perm="a+r">
 			<fileset dir="${scratch_dir}" />
 		</chmod>
@@ -94,7 +94,7 @@
 	<target name="fix_main" depends="init">
 		<copy file="t2t.pl" toFile="${scratch_dir}/t2t.pl" />
 
-  		<replaceregexp 
+  		<replaceregexp
   			file="${scratch_dir}/t2t.pl"
             match="^use lib '/Users/steve/perl/t2t';$"
             replace=""
@@ -106,7 +106,7 @@
 		<exec executable="scp">
 			<arg line="${tar_ball_name}.gz scholnic@scholnick.net:www/t2t" />
         </exec>
-	</target>  	
+	</target>
 
 	<!--
 	<target name="html" description="uploads the HTML files">
@@ -114,13 +114,13 @@
 			<arg line="readme.html scholnic@scholnick.net:www/t2t" />
 		</exec>
 		<echo message="Uploaded readme.html" />
-		
+
        <exec executable="scp">
 			<arg line="license.html scholnic@scholnick.net:www/t2t" />
        </exec>
 	</target>
 	-->
-	
+
 	<target name="doc" description="Creates the man page">
         <exec executable="${basedir}/createdoc.sh" />
 	</target>
