@@ -135,6 +135,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

@@ -6,16 +6,16 @@ use warnings;
 use T2t::Utilities;
 use T2t::UserPreferencesCache;
 
-use overload 
+use overload
     q{""} => \&toString,
     cmp   => \&compareAsString;
-    
+
 use base qw( T2t::HTMLElement );
 
 sub new
 {
     my $package = shift;
-    
+
     bless {
        _data     => shift,
        type      => "td",
@@ -29,20 +29,20 @@ sub toString
    my $self  = shift;
    my $prefs = T2t::UserPreferencesCache::getInstance();
    my $addNL = $prefs->setAddNewLineToCell();
-   
+
    if( $self->isEmptyRow() )
    {
         my $s = "<td " . $prefs->getEmptyRowCellAtts() . ">&nbsp;</td>";
         $s .= "\n" if( $addNL );
-        
+
         return $s;
    }
-   
+
    if( ! $self->getData() && $self->getData() ne '0' && $prefs->isNbsp() )
    {
-   		return $self->createTag( $self->{type},$self->{attrs},'&nbsp;',$addNL ); 
+   		return $self->createTag( $self->{type},$self->{attrs},'&nbsp;',$addNL );
    }
-   
+
    $self->createTag($self->{type},$self->{attrs}, $self->{_data},$addNL);
 }
 
@@ -58,7 +58,7 @@ sub setEmptyRow { $_[0]->{emptyRow} = $_[1]; }
 sub isEmptyRow  { return $_[0]->{emptyRow};  }
 
 sub getNoWrap           # nowrap is an empty attribute, so it is special
-{                       # returns a boolean 
+{                       # returns a boolean
    defined( $_[0]->{nowrap} ) ? 1 : 0;
 }
 
@@ -68,7 +68,7 @@ sub setNoWrap           # nowrap is an empty attribute, so it is special
     my %attrs         = %{ $self->{attrs} };
 
     if( $value )
-    {  
+    {
        $attrs{nowrap} = $T2t::HTMLElement::EMPTY_ATTRIBUTE;
     }
     else
@@ -82,7 +82,7 @@ sub setHeader
 {
     my $self     = shift;
     my $isHeader = shift;
-    
+
     $self->{type} = $isHeader ? "th" : "td";
 }
 
@@ -130,6 +130,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

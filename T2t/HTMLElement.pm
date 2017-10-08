@@ -26,7 +26,7 @@ sub isEmptyTag
    my $tag  = shift;
 
    return 0 if ! $tag;
-      
+
    $tag eq $EMPTY_ATTRIBUTE;
 }
 
@@ -42,9 +42,9 @@ sub getTab
 sub setIndividualAttribute
 {
     my ($self,$attName,$value) = @_;
-    
+
     return if ! $value;
-    
+
     my %attrs                  = %{ $self->{attrs} };
     $attrs{$attName}           = $value;
     $self->{attrs}             = { %attrs };
@@ -61,7 +61,7 @@ sub setAllAttributes
 {
    my ($self,%items) = @_;
    my %attrs = %{ $self->{attrs} };
-   
+
    foreach ( keys %items )
    {
        $attrs{$_} = $items{$_};
@@ -113,9 +113,9 @@ sub createTag
    my $attrRef      = shift;
    my $data         = shift;
    my $addNewLine 	= shift;
-   
+
    $addNewLine = 0 if( ! defined $addNewLine );
-   
+
    my $result   = "<$type";
    foreach ( sort keys(%$attrRef) )
    {
@@ -124,19 +124,19 @@ sub createTag
            	$result .= " $_";
        }
        else
-       {   
+       {
        		$result .= " $_=\"$attrRef->{$_}\"" if( defined $attrRef->{$_} && length($attrRef->{$_}) > 0 );
        }
    }
    $result .= ">";
-   
-   if( defined $data ) 
+
+   if( defined $data )
    {
       $result .= $data;
       $result .= "</$type>";
    }
    $result .= "\n" if( $addNewLine );
-   
+
    $result;
 }
 
@@ -146,6 +146,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

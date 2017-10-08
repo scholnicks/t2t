@@ -50,7 +50,7 @@ _EOHTML_
 sub getHTML5Template
 {
 	return <<'_EOHTML_';
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
    <meta charset="utf-8" />
@@ -71,5 +71,13 @@ _EOHTML_
 }
 
 1;
+
+__END__
+
+=head1 AUTHOR INFORMATION
+
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
+
+t2t is published under MIT.  See license.html for details
 
 

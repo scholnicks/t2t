@@ -23,7 +23,7 @@ sub createData				# creates the tables and outputs them
 {
 	my $self = shift;
 	my $file = $self->getFile();		# input filename
-	
+
 	dieMessage "No file specified\n" if( ! $file );
 
 	eval 'use Spreadsheet::ReadSXC qw(read_sxc)';
@@ -34,13 +34,13 @@ sub createData				# creates the tables and outputs them
 	}
 
 	my @tables;
-	
+
 	my $workBook = read_sxc($file);
-	
+
   	# create and initialize the table object
   	my $table = $self->createTable();
 
-	foreach ( sort keys %$workBook ) 
+	foreach ( sort keys %$workBook )
 	{
 		next if $#{$$workBook{$_}} < 1;
 
@@ -48,15 +48,15 @@ sub createData				# creates the tables and outputs them
 	 	{
 	 		next if ! defined $_;
 	 		my @data = @{$_};
-	 		
+
 			my @cellData = ();
-		
-			foreach ( @data ) 
+
+			foreach ( @data )
 			{
 		 		next if ! defined $_;
 		   		push( @cellData, $_ );
 			}
-		
+
 			$table->addRow( new T2t::Row(\@cellData) );
 	 	}
 	}
@@ -70,6 +70,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

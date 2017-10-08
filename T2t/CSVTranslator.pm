@@ -25,7 +25,7 @@ sub createData				# creates the tables and outputs them
 {
 	my $self = shift;
 	my $file = $self->getFile();		# input filename
-	
+
 	dieMessage "No file specified\n" if( ! $file );
 
 	eval 'use Text::CSV_XS';
@@ -34,7 +34,7 @@ sub createData				# creates the tables and outputs them
 		warnMessage("Unable to process $file, Text::CSV_XS must be installed.\n");
 		return;
 	}
-	
+
   	# create and initialize the table object
   	my $table = $self->createTable();
 
@@ -44,16 +44,16 @@ sub createData				# creates the tables and outputs them
   	while( <$IN> )
   	{
   		chomp;
-  		
+
   		$csvParser->parse($_);
   		my @cellData = $csvParser->fields();
   		next if ! @cellData;
-  		
+
 		$table->addRow( new T2t::Row(\@cellData) );
 	}
-  
+
   	close $IN;
-  	
+
   	return [$table];
 }
 
@@ -63,6 +63,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

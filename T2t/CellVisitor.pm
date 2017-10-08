@@ -16,3 +16,11 @@ sub affectRow
 }
 
 1;
+
+__END__
+
+=head1 AUTHOR INFORMATION
+
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
+
+t2t is published under MIT.  See license.html for details

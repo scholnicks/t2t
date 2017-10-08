@@ -7,7 +7,7 @@ use base qw(T2t::BaseClass);
 sub new
 {
     my $package = shift;
-    
+
     bless {
        template => shift,
        title    => shift
@@ -21,12 +21,12 @@ sub process
 	my $template  = $self->{template};
 	my $title = $self->{title};
 
-	while ($template =~ /{file path="(.*)"}/img) 
+	while ($template =~ /{file path="(.*)"}/img)
 	{
 		my $contents = getFileData($1);
 		$template =~ s/{file path="$1"}/$contents/;
 	}
-	
+
 	$template =~ s/{title}/$title/g;
 	$template =~ s/{data}/$tables/g;
 
@@ -39,7 +39,7 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details
 

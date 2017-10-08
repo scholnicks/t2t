@@ -16,12 +16,12 @@
 
 <p>
 <h1>DESCRIPTION</h1>
-<b>t2t</b> converts standard ASCII text to HTML 
-tables.  Any text with the delimiter embedded in it is converted to a 
+<b>t2t</b> converts standard ASCII text to HTML
+tables.  Any text with the delimiter embedded in it is converted to a
 table.  The user can specify any regular expression as a delimiter; the default
-delimiter is the tab.  As a result, t2t can easily transform any 
+delimiter is the tab.  As a result, t2t can easily transform any
 spreadsheet saved as tab delimited text to a  HTML table.
-The table ends with either the end of the file or the first line of 
+The table ends with either the end of the file or the first line of
 non-delimited text.  All other text is just written to the output file.
 </p>
 
@@ -30,7 +30,7 @@ non-delimited text.  All other text is just written to the output file.
 <dl>
 	<dt>--class</dt>
 	<dd>CSS class for all tables</dd>
-	
+
    	<dt>--dashes</dt>
    	<dd>Skip any line, that starts with 5 dashes or underscores.</dd>
 
@@ -39,7 +39,7 @@ non-delimited text.  All other text is just written to the output file.
 
    	<dt>--debug</dt>
    	<dd>Turns on debugging mode (implies --verbose)</dd>
-   	
+
 	<dt>--equal</dt>
 	<dd>Ensures all rows have the same number of columns</dd>
 
@@ -54,10 +54,10 @@ non-delimited text.  All other text is just written to the output file.
 
   	<dt>--html5</dt>
   	<dd>Output in HTML5 mode (--template can override)</dd>
-  	
+
 	<dt>--id</dt>
 	<dd>CSS id for all tables (only should be used with --one)</dd>
-	
+
    	<dt>--initFilePath [path to initialization file]</dt>
    	<dd>Reads in an initialization file from the specified path</dd>
 
@@ -68,9 +68,9 @@ non-delimited text.  All other text is just written to the output file.
 	<dd>prints a &amp;nbsp; instead of a blank</dd>
 
 	<dt>--one</dt>
-	<dd>Process the entire input file (or all of stdin) 
+	<dd>Process the entire input file (or all of stdin)
 		 as one table.  Any line with out a delimiter is written out as a table
-		 line with a row with one data module.  
+		 line with a row with one data module.
 	</dd>
 
 	<dt>--overwrite</dt>
@@ -87,13 +87,13 @@ non-delimited text.  All other text is just written to the output file.
 
 	<dt>--style</dt>
 	<dd>CSS style for all tables</dd>
-	
+
 	<dt>--tablesOnly</dt>
 	<dd>generate only HTML for the tables no surrounding HTML</dd>
 
 	<dt>--template [file]</dt>
 	<dd>Use the specified template file</dd>
-	
+
 	<dt>--title [title]</dt>
 	<dd>adds a title to the HTML document</dd>
 
@@ -116,14 +116,13 @@ perl(1), perlre(1), perlreref(1)
 
 <p>
 <h1>AUTHOR</h1>
-Steven Scholnick &lt;steve@scholnick.net&gt; 1996 - 2011
+Steven Scholnick &lt;scholnicks@gmail.com&gt; 1996 -
 </p>
 
 <p>
 <h1>COPYRIGHT</h1>
-t2t is published under LGPL.  See http://www.scholnick.net/t2t/license.html for details
+t2t is published under MIT.  See http://www.scholnick.net/t2t/license.html for details
 </p>
 
-<!--#include virtual="/google-analytics" -->
 </body>
 </html>

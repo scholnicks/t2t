@@ -11,7 +11,7 @@ sub _new
 {
     my $package  = shift;
     my $self   = {};
-    
+
     $self->{skipFields}       			= 'zz';
     $self->{header}           			= 0;
     $self->{debug}           			= 0;
@@ -28,16 +28,16 @@ sub _new
     $self->{'highlightColumn.number'} 	= '';
     $self->{removeEmptyRows}            = 0;
     $self->{templateFile}               = undef;
-    
+
     $self->{ledgerColors}   = [];
     $self->{cellAlignments} = [];
     $self->{cellWidths}     = [];
-    
+
     $self->{cellAtts}  = {};
     $self->{tableAtts} = {};
     $self->{rowAtts}   = {};
     $self->{bodyAtts}  = {};
-    
+
     bless( $self, $package );
 }
 
@@ -51,14 +51,14 @@ sub parseAttributes
 {
     my $self  = shift;
     my $prefs = shift;
-    
+
     foreach my $key ( sort keys %{$prefs} )
     {
         $self->saveOption($prefs, $key );
     }
-    
+
     # for all of these options, only set them if a value is being passed in
-    
+
     $self->setTemplateFile(     $prefs->{'general.template'}        ) if defined $prefs->{'general.template'};
     $self->setDelimiter(        $prefs->{'general.delim'}           ) if defined $prefs->{'general.delim'};
 	$self->setDebug( 			$prefs->{'general.debug'} 			) if defined $prefs->{'general.debug'};
@@ -72,7 +72,7 @@ sub parseAttributes
 	$self->setEmptyRowCellAtts( $prefs->{'general.emptyRowCellAtt'}	) if defined $prefs->{'general.emptyRowCellAtt'};
 	$self->setAddSpace(			$prefs->{'general.addSpace'}		) if defined $prefs->{'general.addSpace'};
 	$self->setLimit(            $prefs->{'general.limit'}           ) if defined $prefs->{'general.limit'};
-	
+
 	$self->setTablesOnly(		$prefs->{'general.tablesOnly'}		) if defined $prefs->{'general.tablesOnly'};
 	$self->setDashes(			$prefs->{'general.dashes'}			) if defined $prefs->{'general.dashes'};
 	$self->setSqueeze(			$prefs->{'general.squeeze'}			) if defined $prefs->{'general.squeeze'};
@@ -85,7 +85,7 @@ sub parseAttributes
 	$self->setLedgerColors(   $prefs->{'table.ledgerColors'}	) if defined $prefs->{'table.ledgerColors'};
 	$self->setCellWidths(     $prefs->{'table.cellWidths'} 		) if defined $prefs->{'table.cellWidths'};
 	$self->setCellAlignments( $prefs->{'table.cellAlignments'} 	) if defined $prefs->{'table.cellAlignments'};
-	
+
 	$self->setHighlightColumnColor(  $prefs->{'table.highlightColumn.color'}  ) if( $prefs->{'table.highlightColumn.color'}  );
 	$self->setHighlightColumnNumber( $prefs->{'table.highlightColumn.number'} ) if( $prefs->{'table.highlightColumn.number'} );
 }
@@ -95,11 +95,11 @@ sub saveOption
     my $self       = shift;
     my $attributes = shift;
     my $key        = shift;
-    
+
     local $_  = $key;
-    
+
     s!(.*?)\.!!;
-    
+
     if(  $key =~ /^cell/ )
     {
         $self->{cellAtts}->{$_} = $attributes->{$key};
@@ -109,21 +109,21 @@ sub saveOption
         $self->{tableAtts}->{$_} = $attributes->{$key};
     }
  }
- 
-sub getHighlightColumnNumber() 
-{  
-	my $value = $_[0]->{'highlightColumn.number'}; 
+
+sub getHighlightColumnNumber()
+{
+	my $value = $_[0]->{'highlightColumn.number'};
 	return $value ? $ value : -1;
 }
 
-sub setDelimiter 		
+sub setDelimiter
 {
 	my ($self,$delim) = @_;
-	
+
     $delim = "\t" if ! $delim;
     $delim = "\t" if $delim eq '\t';
 
-	$self->{delimiter} = $delim; 
+	$self->{delimiter} = $delim;
 }
 
 sub getDelimiter    {  $_[0]->{delimiter}; }
@@ -189,9 +189,9 @@ sub getSkipFields         	{  $_[0]->{skipFields}; }
 
 sub setEmptyRowCellAtts   {  $_[0]->{emptyRowCellAtts} = $_[1]; }
 
-sub getEmptyRowCellAtts   
+sub getEmptyRowCellAtts
 {
-	my $self = shift;  
+	my $self = shift;
 	return '' if ! $self->{emptyRowCellAtts};
 	return $self->{emptyRowCellAtts};
 }
@@ -203,10 +203,10 @@ sub setLedgerColors
 {
     my $self = shift;
     my $text = shift;
-    
+
     return if ! $text;
-    
-    $self->addLedgerColors( split(',',$text) );  
+
+    $self->addLedgerColors( split(',',$text) );
 }
 
 sub addLedgerColors
@@ -238,10 +238,10 @@ sub setCellWidths
 {
     my $self = shift;
     my $text = shift;
-    
+
     return if ! $text;
-    
-    $self->addCellWidths( split(',',$text) );  
+
+    $self->addCellWidths( split(',',$text) );
 }
 
 sub addCellWidths
@@ -273,10 +273,10 @@ sub setCellAlignments
 {
     my $self = shift;
     my $text = shift;
-    
+
     return if ! $text;
-    
-    $self->addCellAlignments( split(',',$text) );  
+
+    $self->addCellAlignments( split(',',$text) );
 }
 
 sub addCellAlignments
@@ -297,21 +297,21 @@ sub removeCellAlignments
 
 sub setTableAttributes {  $_[0]->{tableAtts} = $_[1]; }
 
-sub getTableAttributes 
+sub getTableAttributes
 {
 	my $self           = shift;
 	my %localTableAtts = ();
 	my %savedAtts      = %{$self->{tableAtts}};
-	
+
 	foreach ( keys(%savedAtts) )
 	{
 		# only return the attibutes that are HTML compliant
 		if( ! /cellWidths|cellAlignments|ledgerColors|highlightColumn/ )
 		{
-			$localTableAtts{$_} = $savedAtts{$_}; 
+			$localTableAtts{$_} = $savedAtts{$_};
 		}
 	}
-	
+
 	return \%localTableAtts;
 }
 
@@ -340,6 +340,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

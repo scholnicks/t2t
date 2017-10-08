@@ -9,7 +9,7 @@
 #  Full documentation avaiable at:
 #	http://www.scholnick.net/t2t
 #
-#############################################################
+###############################################################################################
 
 use strict;
 use warnings;
@@ -192,7 +192,7 @@ sub help		# the help screen
 --tablesOnly	generate only HTML for the tables no surrounding HTML
 --template      use the specified template file
 --title         add a title to the page
---verbose       verbose mode.  Prints processing details for each file
+--verbose       verbose mode. Prints processing details for each file
 --version       prints version number
 --wholeTable    synonym for --one
 

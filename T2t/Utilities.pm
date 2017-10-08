@@ -15,15 +15,15 @@ our @EXPORT = qw(trim cleanArguments getPath getResourceFilePath printFile getFi
 sub getFileData
 {
 	my $filePath = shift;
-	
+
 	return "" if( ! $filePath );
-	
+
 	$filePath = expandPath( $filePath );
-	
+
     my $ret = "";
-    
+
     debug("Reading in $filePath");
-    
+
     if( -e $filePath )
     {
 	    local $/ = undef;
@@ -31,22 +31,22 @@ sub getFileData
 	    $ret = <$STYLE>;	                           # slurp in the whole file
 	    close $STYLE;
     }
-    
+
     $ret;
 }
 
 sub expandPath
 {
 	my $path = shift;
-	
+
 	return $path if $path !~ /^~/;
-	
+
 	my $home = $ENV{"HOME"};
-	
+
 	warnMessage( "HOME is not set" ) if ! $home;
-	
+
 	$path =~ s/~/$home/;
-	
+
 	$path;
 }
 
@@ -57,13 +57,13 @@ sub getResourceFilePath
 	my $otherStyle = shift; 					# win rc file, eg t2t.rc
 
 	warnMessage( "HOME is not set" ) if ! $ENV{"HOME"};
-	
+
   	# first try unix style
   	my $initPath = getPath($ENV{"HOME"},$unixStyle);
-  
+
   	# if not there, try others style
   	$initPath = getPath($ENV{"HOME"},$otherStyle) if( ! -e $initPath );
-  
+
  	if( -e $initPath )
   	{
   		return $initPath;
@@ -77,7 +77,7 @@ sub getResourceFilePath
 sub getFileAsArray			# returns a whole file as an array text lines
 {
 	my $file = shift;
-	
+
 	my @lines;
 
 	open(my $IN,"<",$file) || return @lines;
@@ -88,7 +88,7 @@ sub getFileAsArray			# returns a whole file as an array text lines
 		push(@lines,$_);
 	}
 	close $	IN;
-	
+
 	@lines;
 }
 
@@ -104,7 +104,7 @@ sub printFile    # prints a file verbatim to the specified file handle
 {
    my $file = shift || return;
    my $FH   = shift || return;
-   
+
    open(my $INP,"<",$file) || return;
    print $FH $_ while( <$INP> );
    close $INP;
@@ -130,7 +130,7 @@ sub cleanArguments
 	{
 		$_ = '' if( ! $_ );
 	}
-	
+
 	return @args;
 }
 
@@ -161,17 +161,17 @@ sub dieMessage
 	exit -1;
 }
 
-sub isQuiet	
+sub isQuiet
 {
     return T2t::UserPreferencesCache::getInstance()->isQuiet();
 }
 
-sub isVerbose	
+sub isVerbose
 {
     return T2t::UserPreferencesCache::getInstance()->isVerbose() || isDebug();
 }
 
-sub isDebug	
+sub isDebug
 {
     return T2t::UserPreferencesCache::getInstance()->isDebug();
 }
@@ -183,6 +183,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

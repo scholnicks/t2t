@@ -20,9 +20,9 @@ sub new
 {
     my $package = shift;
     my $self    = {};
-    
+
     $self->{file} = shift;
-    
+
     bless( $self, $package );
 }
 
@@ -43,23 +43,23 @@ sub translate
 			warnMessage("Not overwriting file $out\n");
 			return;
 		}
-		
+
 	    open(STDIN,$file) or dieMessage "Cannot open input : $file\n";
   	}
- 
+
 	open(OUT,">$out") or dieMessage "Cannot open output : $out\n";
 
 	my $title = $self->getPreferencesCache()->getTitle() || "";
-	
+
 	my $data = "";
 	foreach my $table ( @{$self->createData()})
 	{
 		$data .= $table->toString();
 	}
-	
+
 	my $processor = new T2t::TemplateProcessor(getTemplate(),$title);
 	print OUT $processor->process($data);
-	
+
 	close OUT;
 
 	close STDIN if $file;
@@ -72,11 +72,11 @@ sub translate
 sub getOutFilename
 {
 	my $self = shift;
-	
+
 	my $out = $self->getFile();
 	my $ri  = rindex($self->getFile(),".");
 
-	if( $ri > -1 ) 
+	if( $ri > -1 )
 	{
 		my $exten = substr($self->getFile(),$ri);   # get the extension
 		$out =~ s/$exten/.html/;         			# replace the extension
@@ -85,7 +85,7 @@ sub getOutFilename
 	{
 	   	$out = "$out.html";
 	}
-	
+
 	$out;
 }
 
@@ -109,8 +109,8 @@ sub createTable
 sub toString
 {
 	my $self = shift;
-	
-	return ref($self) . " : " . ( $self->getFile() ? $self->getFile() : "stdin" ); 
+
+	return ref($self) . " : " . ( $self->getFile() ? $self->getFile() : "stdin" );
 }
 
 sub setFile		{  $_[0]->{file} = $_[1]; }
@@ -122,6 +122,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

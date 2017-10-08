@@ -24,11 +24,11 @@ sub new
     $self;
 }
 
-sub setNumberOfColumns 
+sub setNumberOfColumns
 {
 	my $self        = shift;
 	my $columnCount = shift;
-	
+
 	my @cellData;
 	push(@cellData,new T2t::Cell('',1)) foreach( 1 .. $columnCount );
 	$self->{_data} = \@cellData;
@@ -42,6 +42,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

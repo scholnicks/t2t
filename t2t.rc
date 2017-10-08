@@ -6,8 +6,8 @@
 
 	This is a bare bones rc file; all of the options have been commented out.  This will
 	use all of the t2t's defaults and it will not complain about a missing rc file.
-	
-	Most users will want to customize this file for their particular needs.  
+
+	Most users will want to customize this file for their particular needs.
 -->
 
 <t2t>
@@ -57,7 +57,7 @@
         <border>1</border>
         <width>100%</width>
         <highlightColumn>
-	       	<number>2</number>	 
+	       	<number>2</number>
         	<color>#00FF00</color>
         </highlightColumn>
         <ledgerColors>#D3D3D3,#FFFFFF</ledgerColors>

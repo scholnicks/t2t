@@ -23,7 +23,7 @@ sub new
     bless( $self, $package );
 
     $self->{_data} = $self->_createCells($dataRef);
-    
+
     $self;
 }
 
@@ -31,16 +31,16 @@ sub _createCells
 {
    my ($self,$dataRef) = @_;
    my @cells = ();
-   
+
    my $limit = T2t::UserPreferencesCache::getInstance()->getLimit();
-   
+
    my $dataCount = $limit > 0 ? $limit : scalar(@$dataRef);
-   
+
    for (my $i=0; $i < $dataCount; $i++)
    {
       push( @cells, new T2t::Cell($dataRef->[$i],$self->{header}) );
    }
-   
+
    return \@cells;
 }
 
@@ -48,11 +48,11 @@ sub limitColumns
 {
 	my $self           = shift;
 	my $newColumnCount = shift;
-	
+
 	my $currentColumnCount = $self->getColumnCount();
 
 	return if( $newColumnCount == $currentColumnCount );
-	
+
 	if( $newColumnCount > $currentColumnCount )					# add new padding columns
 	{
 		for( my $i=0; $i < ($newColumnCount - $currentColumnCount); $i++ )
@@ -63,7 +63,7 @@ sub limitColumns
 	else														# remove columns
 	{
 		splice( @{$self->{_data}}, $newColumnCount );
-	
+
 	}
 }
 
@@ -83,7 +83,7 @@ sub setCellAttributes
 }
 
 sub getCell
-{ 
+{
    my $self  = shift;
    my $index = shift;
    return $self->{_data}->[$index];
@@ -92,34 +92,34 @@ sub getCell
 sub setCellType
 {
    my ($self,$type) = @_;
-   foreach my $cell ( @{$self->{_data}} ) 
+   foreach my $cell ( @{$self->{_data}} )
    {
         $cell->setType( $type );
-   }   
+   }
 }
 
 sub toString
 {
    my $self   = shift;
-   
+
    my $skipField = T2t::UserPreferencesCache::getInstance()->getSkipFields();
-   
+
    my $result = "";
-   
+
    $result .= "<thead>" if( $self->isHeader() );
    $result .= $self->createTag("tr", $self->{attrs});
-   
+
    my $i = 0;
 
-   foreach my $cell ( @{$self->{_data}} ) 
+   foreach my $cell ( @{$self->{_data}} )
    {
        	if( $skipField && ($i+1) =~ /$skipField/ )
        	{
        		# print STDERR "skipping column " . ($i+1) . "\n";
         	$i++;
-        	next;       
+        	next;
        	}
-        
+
         if( $self->isHeader() )
         {
         	if( ($i+1) == T2t::UserPreferencesCache::getInstance()->getHighlightColumnNumber() )
@@ -127,17 +127,17 @@ sub toString
         		$cell->setBGColor( T2t::UserPreferencesCache::getInstance()->getHighlightColumnColor() );
         	}
         }
-        
+
 		$cell->setHeader( $self->isHeader() );
-	  
+
 		$result .= $self->getTab();
 		$result .= $self->getTab();
-		 
+
 		$cell->setAlign( T2t::UserPreferencesCache::getInstance()->getCellAlignment($i) );
 		$cell->setWidth( T2t::UserPreferencesCache::getInstance()->getCellWidth($i) );
-		 
+
 		$result .= $cell;
-       
+
        	$i++;
    }
 
@@ -163,6 +163,6 @@ __END__
 
 =head1 AUTHOR INFORMATION
 
-Copyright 2000-2010, Steven Scholnick <steve@scholnick.net>  
+Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under LGPL.  See license.html for details
+t2t is published under MIT.  See license.html for details

@@ -102,25 +102,6 @@
         />
 	</target>
 
-	<target name="upload_tar" description="uploads the tar file">
-		<exec executable="scp">
-			<arg line="${tar_ball_name}.gz scholnic@scholnick.net:www/t2t" />
-        </exec>
-	</target>
-
-	<!--
-	<target name="html" description="uploads the HTML files">
-		<exec executable="scp">
-			<arg line="readme.html scholnic@scholnick.net:www/t2t" />
-		</exec>
-		<echo message="Uploaded readme.html" />
-
-       <exec executable="scp">
-			<arg line="license.html scholnic@scholnick.net:www/t2t" />
-       </exec>
-	</target>
-	-->
-
 	<target name="doc" description="Creates the man page">
         <exec executable="${basedir}/createdoc.sh" />
 	</target>
