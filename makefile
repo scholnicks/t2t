@@ -1,6 +1,6 @@
 # Makefile for t2t installation
 #
-# See http://www.scholnick.net/t2t for details
+# See https://scholnick.net/t2t for details
 
 # Edit as necessary
 
@@ -26,7 +26,7 @@ modules::
 	cp -R T2t $(PERLLIB)
 	chmod 755 $(PERLLIB)/T2t
 	chmod a+r $(PERLLIB)/T2t/*.pm
-	
+
 doc::
 	install -m 644 t2t.1 $(MANDIR)
 

@@ -2,12 +2,12 @@
 #
 #  t2t:	text to table translator
 #
-#  (c) Steven Scholnick <steve@scholnick.net>
+#  (c) Steven Scholnick <scholnicks@gmail.com>
 #
-#  t2t is published under a MIT license. See http://www.scholnick.net/license.txt for details.
+#  t2t is published under a MIT license. See https://scholnick.net/license.txt for details.
 #
 #  Full documentation avaiable at:
-#	http://www.scholnick.net/t2t
+#	https://scholnick.net/t2t
 #
 ###############################################################################################
 
@@ -152,7 +152,7 @@ t2t : Version $version
 
 (c) Steven Scholnick <scholnicks\@gmail.com> 1996 -
 
-t2t is published under a MIT license. See http://www.scholnick.net/license.txt for details.
+t2t is published under a MIT license. See https://scholnick.net/license.txt for details.
 
 EOV
 
