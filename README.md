@@ -3,5 +3,8 @@ t2t
 
 t2t converts delimited text to HTML.
 
-t2t is published under a MIT license. See https://scholnick.net/license.txt for details.
+
+See https://github.com/scholnicks/t2t/wiki for more details.
+
+t2t is freeware released under the [MIT License](https://github.com/scholnicks/t2t/blob/master/license.txt).
 
