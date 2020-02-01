@@ -124,4 +124,4 @@ __END__
 
 Copyright 2000-, Steven Scholnick <scholnicks@gmail.com>
 
-t2t is published under MIT.  See license.html for details
+t2t is published under MIT.  See license.txt for details

@@ -1,8 +1,4 @@
 # Makefile for t2t installation
-#
-# See https://scholnick.net/t2t for details
-
-# Edit as necessary
 
 PERL      = $(shell which perl)
 PERLLIB   = $(shell $(PERL) -V:sitelib | cut -d"'" -f2)

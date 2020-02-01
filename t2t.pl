@@ -4,10 +4,7 @@
 #
 #  (c) Steven Scholnick <scholnicks@gmail.com>
 #
-#  t2t is published under a MIT license. See https://scholnick.net/license.txt for details.
-#
-#  Full documentation avaiable at:
-#	https://scholnick.net/t2t
+#  t2t is published under a MIT license.
 #
 ###############################################################################################
 
