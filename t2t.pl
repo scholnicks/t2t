@@ -14,7 +14,7 @@ use warnings;
 use Cwd;
 use Getopt::Long;
 
-use lib '/Users/steve/perl/t2t';
+use lib '.';
 
 use T2t::Engine;
 use T2t::PreferencesFileReader;
