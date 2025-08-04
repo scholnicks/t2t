@@ -67,7 +67,7 @@ sub readSetsFiles
 {
 	my $self = shift;
 	my $setsPath = '/Users/steve/sets';
-	my $setsRootURL = 'http://www.scholnick.net/setlists/';
+	my $setsRootURL = '/setlists/';
 
 	foreach my $file ( 'sets.a-g','sets.h-n','sets.o-r','sets.s-z', 'zeppelin' )
 	{
